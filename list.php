@@ -13,7 +13,14 @@ if($openDir){
 function fileOpen($file){
     $myfile = fopen("../dailyfunding-guestbook/guestbook_data/$file", "r");
     $data = json_decode(fread($myfile, filesize("../dailyfunding-guestbook/guestbook_data/$file")));
-    echo "$data->title  $data->id $data->date".'<br />';
+    echo "
+    <table>
+        <tr>
+          <td>$data->title</td>
+          <td>$data->id</td>
+          <td>$data->date</td>
+        </tr>
+  </table>";
     fclose($myfile);
 }
 ?>

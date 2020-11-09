@@ -4,6 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guestbook</title>
+    <style>
+      table,
+      th,
+      td {
+        width: 800px;
+        border: 1px solid gray;
+      }
+      table {
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding: 10px;
+        width: 100px;
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -14,7 +31,20 @@
       <a href="input.html">글쓰기</a>
     </section>
     <section>
-      <?php include "list.php"; ?>
+      <!-- <span>Title</span><span>User</span><span>Date</span> -->
+      <table>
+        <caption></caption>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>User</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php include "list.php"; ?>
+        </tbody>
+      </table>
     </section>
   </body>
 </html>

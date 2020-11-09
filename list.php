@@ -12,7 +12,8 @@ if($openDir){
 
 function fileOpen($file){
     $myfile = fopen("../dailyfunding-guestbook/guestbook_data/$file", "r");
-     = fread($myfile, filesize("../dailyfunding-guestbook/guestbook_data/$file"))."<br>";
+    $data = json_decode(fread($myfile, filesize("../dailyfunding-guestbook/guestbook_data/$file")));
+    echo "$data->title  $data->id $data->date".'<br />';
     fclose($myfile);
 }
 ?>

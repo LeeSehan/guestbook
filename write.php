@@ -6,10 +6,11 @@ if(!empty($_POST['id']) && !empty($_POST['pw']) && !empty($_POST['title']) && !e
     $content = $_POST['content'];
 
     $dateString = date("Y-m-d h:i:s", time());
-    $file = "guestbook_data/{$title}.json";
     $data = array('date'=>$dateString, 'id'=>$id, 'pw'=>$pw, 'title'=>$title, 'content'=>$content);
-    $dataJosn = json_encode($data);
-    file_put_contents($file, $dataJosn);
+    $dataArr = json_decode(file_get_contents("guestbook_data.json"));
+    array_push($dataArr, $data);
+    $dataJosn = json_encode($dataArr);
+    file_put_contents("../dailyfunding-guestbook/guestbook_data.json", $dataJosn);
     header('Location: ../dailyfunding-guestbook/index.html');
 }
 ?>

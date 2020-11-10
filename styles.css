@@ -1,0 +1,33 @@
+body header {
+  text-align: center;
+}
+
+table,
+th,
+td {
+  border: 1px solid #444444;
+}
+table {
+  width: 50%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+th,
+td {
+  padding: 10px;
+  text-align: center;
+}
+tbody tr {
+  cursor: pointer;
+}
+.table {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.pagelink {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}

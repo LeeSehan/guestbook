@@ -1,7 +1,8 @@
 <?php
-    $myfile = fopen("guestbook_data.json", "r");
-    $data = json_decode(fread($myfile, filesize("guestbook_data.json")));
-    // $dataList = "$data->title $data->id $data->date";
-    // echo $data[1]->title;
-    fclose($myfile);
+    // $_POST['NUM'];
+    if( $num !== 0 ){
+        $URL = $_SERVER['HTTP_HOST'].$_SERVER["REQUEST_URI"];
+        header("HTTP/1.1 307 Temporary move");
+        header('Location: ../dailyfunding-guestbook/content.html');
+    }
 ?>

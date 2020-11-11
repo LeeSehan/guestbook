@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Content</title>
+  </head>
+  <body>
+    <?php include_once "data.php" ?>
+    <h1>
+      <p>
+        Title: <span><? echo $data[$_POST['NUM']-1]->title; ?></span>
+      </p>
+    </h1>
+    <p>
+      User: <span><? echo $data[$_POST['NUM']-1]->id; ?></span>
+    </p>
+    <p>
+      Date: <span><? echo $data[$_POST['NUM']-1]->date; ?></span>
+    </p>
+    <p>
+      Content: <span><? echo $data[$_POST['NUM']-1]->content; ?></span>
+    </p>
+  </body>
+</html>

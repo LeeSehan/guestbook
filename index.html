@@ -7,39 +7,63 @@
     <title>Guestbook</title>
   </head>
   <body>
-    <header>
+    <?php include_once "data.php" ?>
+    <header class="header">
       <h1>방명록</h1>
       <hr />
     </header>
-    <section style="display: flex; justify-content: center">
-      <a href="input.html" class="write-btn">글쓰기</a>
     </section>
-    <section class="table">
+    <section class="section1">
+      <div>
+        <div>
+          <a href="input.html">글쓰기</a>
+        </div>
+      </div>
       <table>
         <caption>
           <h1>Guestbook</h1>
         </caption>
         <thead>
           <tr>
+            <th>Num</th>
             <th>Title</th>
             <th>User</th>
             <th>Date</th>
           </tr>
         </thead>
-        <?php include_once "list.php" ?>
         <tbody>
           <?php
-            $num = 0; 
-            while($num < 10)
-            { ?>
-          <tr>
-            <td><? echo $data[$num]->title; ?></td>
-            <td><? echo $data[$num]->id; ?></td>
-            <td><? echo $data[$num]->date; ?></td>
-            <? $num++;} ?>
-          </tr>
-        </tbody>
+            $num = 0;
+            $listNum = 10;
+            $pageNum = 1;
+            if( $num < $listNum ){
+              while($num < $listNum){
+                if($num < count($data)){
+          ?>
+          <form action="list.php" id="data" method="post">
+            <input type="hidden" id="NUM" name="NUM" value="">
+            <tr>
+              <td><? echo $num+1; ?></td>
+              <td><? echo $data[$num]->title; ?></td>
+              <td><? echo $data[$num]->id; ?></td>
+              <td><? echo $data[$num]->date; ?></td>
+              <?  
+                }
+                  $num++;
+              }
+              ?>
+            </tr>
+          </form>
+          </tbody>
       </table>
+      <a class="pagenum" href="index.html"><?php echo "[$pageNum]" ?></a>
+      <?
+            } else{
+                file_put_contents("../dailyfunding-guestbook/guestbook_data.json", $dataJosn);
+              }
+          ?>
     </section>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="list.js"></script>
   </body>
 </html>

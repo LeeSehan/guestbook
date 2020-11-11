@@ -22,5 +22,10 @@
     <p>
       Content: <span><? echo $data[$_POST['NUM']-1]->content; ?></span>
     </p>
+    <form action="delete.php" method="post">
+      <input type="hidden" name="number" value="<?=$_POST['NUM']?>" />
+      <p>PW: <input type="password" name="inputPW" /></p>
+      <input type="submit" value="삭제" />
+    </form>
   </body>
 </html>

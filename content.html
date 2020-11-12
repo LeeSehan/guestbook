@@ -8,6 +8,10 @@
   </head>
   <body>
     <?php include_once "data.php" ?>
+    <header class="header">
+      <h1><a href="index.html">방명록</a></h1>
+      <hr />
+    </header>
     <h1>
       <p>
         Title: <span><? echo $data[$_POST['NUM']-1]->title; ?></span>

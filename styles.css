@@ -8,19 +8,18 @@ body .header {
   text-align: center;
 }
 
-.section1 div {
+.section1 .write_wrap {
+  margin-top: 35px;
+}
+
+.section1 .write_wrap .write {
   display: flex;
   justify-content: center;
-  height: 60px;
-  margin-top: 20px;
-}
-
-.section1 div div {
-  display: flex;
   align-items: center;
+  height: 60px;
 }
 
-.section1 div div a {
+.section1 .write_wrap .write a {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,6 +29,21 @@ body .header {
   letter-spacing: 1.5px;
   width: 100px;
   height: 40px;
+}
+
+.section1 .list {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.section1 .list .page {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.section1 .list .page span {
+  margin: 0 7px;
 }
 
 .section1 table,
@@ -54,10 +68,5 @@ body .header {
 
 .section1 tbody tr {
   cursor: pointer;
-}
-
-.pagenum {
-  display: flex;
-  justify-content: center;
-  margin-top: 25px;
+  height: 45px;
 }

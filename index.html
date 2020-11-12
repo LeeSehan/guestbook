@@ -9,61 +9,85 @@
   <body>
     <?php include_once "data.php" ?>
     <header class="header">
-      <h1>방명록</h1>
+      <h1><a href="index.html">방명록</a></h1>
       <hr />
     </header>
     </section>
     <section class="section1">
-      <div>
-        <div>
+      <div class="write_wrap">
+        <div class="write">
           <a href="input.html">글쓰기</a>
         </div>
       </div>
-      <table>
-        <caption>
-          <h1>Guestbook</h1>
-        </caption>
-        <thead>
-          <tr>
-            <th>Num</th>
-            <th>Title</th>
-            <th>User</th>
-            <th>Date</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div class="list">
+        <div class="page">
           <?php
-            $num = 0;
-            $listNum = 10;
+            $paging = count($data) / 10;
             $pageNum = 1;
-            if( $num < $listNum ){
-              while($num < $listNum){
-                if($num < count($data)){
+            if( count($data) <= 10 ){
           ?>
-          <form action="list.php" id="data" method="post">
-            <input type="hidden" id="NUM" name="NUM" value="">
-            <tr>
-              <td><? echo $num+1; ?></td>
-              <td><? echo $data[$num]->title; ?></td>
-              <td><? echo $data[$num]->id; ?></td>
-              <td><? echo $data[$num]->date; ?></td>
-              <?  
-                }
-                  $num++;
-              }
-              ?>
-            </tr>
-          </form>
-          </tbody>
-      </table>
-      <a class="pagenum" href="index.html"><?php echo "[$pageNum]" ?></a>
-      <?
+              <span><?php echo "["."$pageNum"."]"; ?></span>
+          <?php
             } else{
-                file_put_contents("../dailyfunding-guestbook/guestbook_data.json", $dataJosn);
+                while( $pageNum < $paging+1 ){
+          ?>
+                  <span>
+          <?php
+                      echo "["."$pageNum"."]";
+                      $pageNum++;
+          ?>
+                  </span>
+          <?php
+                }
               }
           ?>
+        </div>
+        <table>
+          <caption>
+            <h1>Guestbook</h1>
+          </caption>
+          <thead>
+            <tr>
+              <th>Num</th>
+              <th>Title</th>
+              <th>User</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <form action="page.php" method="post" id="pageform">
+              <input type="hidden" id="pageNum" name="pageNum" value="">
+            </form>
+            <form action="list.php" id="data" method="post">
+              <input type="hidden" id="NUM" name="NUM" value="">
+              <?php
+                $pageNum = $_POST['pageNum']+1;
+                $num = $pageNum*10-10;
+                $start = $pageNum*10-9;
+                $finish = $pageNum*10;
+                while($start <= $finish){
+              ?>
+              <tr>
+                <td><? echo $num+1; ?></td>
+                <td><? echo $data[$num]->title; ?></td>
+                <td><? echo $data[$num]->id; ?></td>
+                <td><? echo $data[$num]->date; ?></td>
+              </tr>
+              <?php
+                  if($num == count($data)-1){
+                    break;
+                  }
+                  $num++;
+                  $start++;
+                }
+              ?>
+            </form>
+          </tbody>
+        </table>
+      </div>
     </section>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="list.js"></script>
+    <script src="page.js"></script>
   </body>
 </html>

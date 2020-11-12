@@ -69,7 +69,7 @@
                 $num = $pageNum*10-10;
                 $start = $pageNum*10-9;
                 $finish = $pageNum*10;
-                while($start <= $finish){
+                while($start <= $finish && count($data) !== 0){
               ?>
               <tr>
                 <td><? echo $num+1; ?></td>

@@ -7,13 +7,9 @@
     <title>Guestbook</title>
   </head>
   <body>
-    <?php include_once "data.php" ?>
-    <?php
-    error_reporting(E_ALL);
-    ini_set('display_errors', '0');
-		?>
+    <?php require_once "data.php" ?>
     <header class="header">
-      <h1><a href="index.html">방명록</a></h1>
+      <h1><a href="index.html?pageNum=0">방명록</a></h1>
       <hr />
     </header>
     </section>
@@ -25,26 +21,7 @@
       </div>
       <div class="list">
         <div class="page">
-          <?php
-            $paging = count($data) / 10;
-            $pageNum = 1;
-            if( count($data) <= 10 ){
-          ?>
-              <span><?php echo "["."$pageNum"."]"; ?></span>
-          <?php
-            } else{
-                while( $pageNum < $paging+1 ){
-          ?>
-                  <span>
-          <?php
-                      echo "["."$pageNum"."]";
-                      $pageNum++;
-          ?>
-                  </span>
-          <?php
-                }
-              }
-          ?>
+          <?php require_once "pageprint.php" ?> <!-- 페이지 번호를 프린트한다. -->
         </div>
         <table>
           <caption>
@@ -59,39 +36,19 @@
             </tr>
           </thead>
           <tbody>
-            <form action="page.php" method="post" id="pageform">
-              <input type="hidden" id="pageNum" name="pageNum" value="">
+            <form action="index.html" method="GET" id="pageform"> <!-- 클릭한 페이지 번호를 보낸다. -->
+              <input type="hidden" id="pageNum" name="pageNum" value=""> <!-- 페이지 번호를 클릭하면 page.js 에서 번호를 submit 한다. -->
+              <?php require_once "list.php" ?>
             </form>
-            <form action="list.php" id="data" method="post">
+            <form action="content.html" id="data" method="POST">
               <input type="hidden" id="NUM" name="NUM" value="">
-              <?php
-                $pageNum = $_POST['pageNum']+1;
-                $num = $pageNum*10-10;
-                $start = $pageNum*10-9;
-                $finish = $pageNum*10;
-                while($start <= $finish && count($data) !== 0){
-              ?>
-              <tr>
-                <td><? echo $num+1; ?></td>
-                <td><? echo $data[$num]->title; ?></td>
-                <td><? echo $data[$num]->id; ?></td>
-                <td><? echo $data[$num]->date; ?></td>
-              </tr>
-              <?php
-                  if($num == count($data)-1){
-                    break;
-                  }
-                  $num++;
-                  $start++;
-                }
-              ?>
             </form>
           </tbody>
         </table>
       </div>
     </section>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="list.js"></script>
     <script src="page.js"></script>
+    <script src="listnum.js"></script>
   </body>
 </html>

@@ -1,8 +1,21 @@
 <?php
-    // $_POST['NUM'];
-    if( $num !== 0 ){
-        $URL = $_SERVER['HTTP_HOST'].$_SERVER["REQUEST_URI"];
-        header("HTTP/1.1 307 Temporary move");
-        header('Location: ../dailyfunding-guestbook/content.html');
+    require_once "data.php";
+
+    $pageNum = $_GET['pageNum']+1;
+    $num = $pageNum*10-10;
+    $start = $pageNum*10-9;
+    $finish = $pageNum*10;
+    while($start <= $finish && count($data) !== 0){
+    echo "<tr>
+        <td>"; echo $num+1; echo "</td>
+        <td>"; echo $data[$num]->title; echo "</td>
+        <td>"; echo $data[$num]->id; echo "</td>
+        <td>"; echo $data[$num]->date; echo "</td>
+    </tr>";
+      if($num == count($data)-1){
+        break;
+      }
+      $num++;
+      $start++;
     }
 ?>

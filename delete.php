@@ -9,7 +9,7 @@
             array_splice($data, $number-1, 1);
             $dataJosn = json_encode($data);
             file_put_contents("../dailyfunding-guestbook/guestbook_data.json", $dataJosn);
-            header('Location: ../dailyfunding-guestbook/index.html');
+            header('Location: ../dailyfunding-guestbook/index.html?pageNum=0');
         } else{
             echo 'Try again!';
         }

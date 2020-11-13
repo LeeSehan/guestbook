@@ -3,11 +3,11 @@ const pageForm = $(".section1 table #pageform");
 const pageHidden = $("input#pageNum");
 
 pageNum.click(function(){
-    const clickNum = pageNum.index(this);
-    submitpage(clickNum);
+    const clickPage = pageNum.index(this); /* 클릭한 페이지 번호가 몇번인지 알려준다. */
+    submitpage(clickPage);
 })
 
-function submitpage(clickNum) {
-    pageHidden.val(clickNum);
+function submitpage(clickPage) {
+    pageHidden.val(clickPage);
     pageForm.submit();
 }

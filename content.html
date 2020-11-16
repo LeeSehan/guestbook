@@ -7,29 +7,22 @@
     <title>Content</title>
   </head>
   <body>
-    <?php require_once "data.php" ?>
     <header class="header">
       <h1><a href="index.html?pageNum=0">방명록</a></h1>
       <hr />
     </header>
     <h1>
-      <p>
-        Title: <span><? echo $data[$_POST['NUM']-1]->title; ?></span>
-      </p>
+      <p>Title: <span id="span_title"></span></p>
     </h1>
-    <p>
-      User: <span><? echo $data[$_POST['NUM']-1]->id; ?></span>
-    </p>
-    <p>
-      Date: <span><? echo $data[$_POST['NUM']-1]->date; ?></span>
-    </p>
-    <p>
-      Content: <span><? echo $data[$_POST['NUM']-1]->content; ?></span>
-    </p>
+    <p>User: <span id="span_user"></span></p>
+    <p>Date: <span id="span_date"></span></p>
+    <p>Content: <span id="span_content"></span></p>
     <form action="delete.php" method="post">
-      <input type="hidden" name="number" value="<?=$_POST['NUM']?>" />
+      <input type="hidden" name="clickNumber" id="clickNumber" value="" />
       <p>PW: <input type="password" name="inputPW" /></p>
       <input type="submit" value="삭제" />
     </form>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="content.js"></script>
   </body>
 </html>

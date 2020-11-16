@@ -3,8 +3,7 @@
     
     if(!empty($_POST['inputPW'])){
         $inputPw = $_POST['inputPW'];
-        $number = $_POST['number'];
-
+        $number = $_POST['clickNumber'];
         if($inputPw == $data[$number-1]->pw){
             array_splice($data, $number-1, 1);
             $dataJosn = json_encode($data);

@@ -10,7 +10,7 @@ const spanContent = $("#span_content");
 
 $(document).ready(function(){
     $.ajax({
-        url: "./content.php",
+        url: "../php/content.php",
         type: "GET",
         data: myParam,
         dataType: "json",

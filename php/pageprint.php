@@ -1,9 +1,7 @@
 <?php
-    require_once "data.php";
-    
-    $paging = count($data) / 10;
+    $paging = $dataCount / 10;
     $pageNum = 1;
-    if( count($data) <= 10 ){
+    if( $dataCount <= 10 ){
         echo "<span>";
         echo "[$pageNum]";
         echo "</span>";
@@ -14,5 +12,5 @@
             echo "</span>";
             $pageNum++; 
             }
-        }
+    }
 ?>

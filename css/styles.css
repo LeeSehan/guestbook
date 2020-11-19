@@ -44,12 +44,18 @@ body .header {
 
 .section1 .list .page span {
   margin: 0 7px;
+  cursor: pointer;
 }
 
 .section1 table,
 .section1 th,
 .section1 td {
   border: 1px solid #444444;
+}
+
+.section1 tr th:nth-child(2),
+.section1 tr td:nth-child(2) {
+  width: 45%;
 }
 
 .section1 table {
